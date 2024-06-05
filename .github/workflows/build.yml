@@ -18,6 +18,7 @@ jobs:
       - name: Checkout duckdb repo
         uses: actions/checkout@v4
         with:
+          fetch-depth: 1000
           repository: duckdb/duckdb
           path: build/duckdb
       - name: Run build
