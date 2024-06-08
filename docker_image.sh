@@ -6,7 +6,7 @@ echo "Getting latest tag version from duckdb"
 duckdb_version=$(git -C build/duckdb describe --tags --abbrev=0)
 image_name=datacatering/duckdb:"${duckdb_version}"
 
-if [ -z "$(docker images -q "$image_name" 2> /dev/null)" ]; then
+if [ -z "$(DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect "$image_name" 2> /dev/null)" ]; then
   echo "Building for duckdb version: ${duckdb_version}"
 
   docker run --privileged --rm tonistiigi/binfmt --install all
