@@ -8,9 +8,9 @@ FROM base AS base-arm64
 ARG DUCKDB_ARCH=aarch64
 
 FROM base-$TARGETARCH
-RUN apt-get update && apt-get install -y curl unzip
-
-RUN curl -L -o duckdb_cli.zip "https://github.com/duckdb/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-${DUCKDB_ARCH}.zip"
-RUN unzip duckdb_cli.zip
+RUN apt-get update  \
+    && apt-get install -y curl unzip \
+    && curl -L -o duckdb_cli.zip "https://github.com/duckdb/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-${DUCKDB_ARCH}.zip" \
+    && unzip duckdb_cli.zip
 
 ENTRYPOINT [ "./duckdb" ]
