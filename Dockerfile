@@ -13,4 +13,4 @@ RUN apt-get update  \
     && curl -L -o duckdb_cli.zip "https://github.com/duckdb/duckdb/releases/download/${DUCKDB_VERSION}/duckdb_cli-linux-${DUCKDB_ARCH}.zip" \
     && unzip duckdb_cli.zip
 
-ENTRYPOINT [ "./duckdb" ]
+ENTRYPOINT [ "/duckdb" ]
