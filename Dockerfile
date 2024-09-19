@@ -14,4 +14,4 @@ RUN apt-get update  \
     && unzip duckdb_cli.zip \
     && rm duckdb_cli.zip
 
-ENTRYPOINT [ "./duckdb" ]
+ENTRYPOINT [ "/duckdb" ]
