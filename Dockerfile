@@ -5,7 +5,7 @@ FROM base AS base-amd64
 ARG DUCKDB_ARCH=amd64
 
 FROM base AS base-arm64
-ARG DUCKDB_ARCH=aarch64
+ARG DUCKDB_ARCH=arm64
 
 FROM base-$TARGETARCH
 RUN apt-get update  \

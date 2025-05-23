@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
+set -e
+
 platforms="linux/amd64,linux/arm64"
+
+# Check if duckdb repo exists, clone if not
+if [ ! -d "build/duckdb" ]; then
+  echo "Cloning duckdb repository..."
+  mkdir -p build
+  git clone --depth=1 https://github.com/duckdb/duckdb.git build/duckdb
+  git -C build/duckdb fetch --tags
+fi
 
 echo "Getting latest tag version from duckdb"
 duckdb_rev_list=$(git -C build/duckdb rev-list --tags --max-count=1)
