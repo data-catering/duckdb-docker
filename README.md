@@ -7,5 +7,5 @@ GitHub action for creating the image checks each day for the latest version of D
 ## Run
 
 ```shell
-docker run -it datacatering/duckdb:v1.2.2
+docker run -it datacatering/duckdb:v1.3.0
 ```
