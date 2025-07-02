@@ -1,4 +1,4 @@
-FROM ubuntu:24.10 AS base
+FROM ubuntu:oracular-20250619 AS base
 ARG DUCKDB_VERSION=v1.0.0
 
 FROM base AS base-amd64
