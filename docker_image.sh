@@ -29,9 +29,21 @@ if [ -z "$(DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect "$image_name"
     --build-arg "DUCKDB_VERSION=${duckdb_version}" \
     -t "$image_name" --push .
 
+  # Extract current version from README.md
+  current_version=$(grep -o 'datacatering/duckdb:v[0-9]\+\.[0-9]\+\.[0-9]\+' README.md | head -1 | cut -d':' -f2)
+  
+  echo "needs_readme_update=true" >> $GITHUB_OUTPUT
+  echo "latest_version=${duckdb_version}" >> $GITHUB_OUTPUT
+  echo "current_version=${current_version}" >> $GITHUB_OUTPUT
+
+  echo "Updating README.md from ${current_version} to ${duckdb_version}"
+  sed "s/${current_version}/${duckdb_version}/g" README.md > README.md.tmp && mv README.md.tmp README.md
+  echo "README.md updated successfully"
+
   echo "Done!"
 else
   echo "Latest duckdb image version already exists, version: ${duckdb_version}"
+  echo "needs_readme_update=false" >> $GITHUB_OUTPUT
 fi
 
 

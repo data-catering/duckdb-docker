@@ -1,4 +1,4 @@
-FROM ubuntu:24.10 AS base
+FROM ubuntu:latest AS base
 ARG DUCKDB_VERSION=v1.0.0
 
 FROM base AS base-amd64
