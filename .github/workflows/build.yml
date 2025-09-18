@@ -29,7 +29,7 @@ jobs:
         run: ./docker_image.sh
       - name: Create Pull Request
         if: steps.build.outputs.needs_readme_update == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update README.md to DuckDB version ${{ steps.build.outputs.latest_version }}"
