@@ -7,13 +7,13 @@ GitHub action for creating the image checks each day for the latest version of D
 ## Run
 
 ```shell
-docker run -it datacatering/duckdb:v1.4.4
+docker run -it datacatering/duckdb:v1.5.0
 ```
 
 ### Run with UI
 
 ```shell
-docker run --rm --net host -it datacatering/duckdb:v1.4.4 -ui
+docker run --rm --net host -it datacatering/duckdb:v1.5.0 -ui
 ```
 
 Then open [http://localhost:4213](http://localhost:4213).
